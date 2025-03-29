@@ -1,6 +1,6 @@
 sudo chown -R labuser:labuser /home/labuser/ecom/ecom-config-server
 ---
-docker run -d --name redis-container -p 127.0.0.1:6379:6379 redis:latest
+docker run -d --name redis-container -p $VM_IP:6379:6379 redis:latest
 ---
 docker run -d \
   --name postgres-container \
