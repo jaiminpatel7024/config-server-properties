@@ -41,5 +41,11 @@ POST localhost:8072/ecom-product-catalog-service/api/v1/products/update
 ---
 POST localhost:8072/ecom-product-catalog-service/api/v1/products/delete/2
 ---
+POST localhost:8072/ecom-inventory-service/api/v1/inventory/add
+{
+	"productId": "1",
+	"quantities": "50"
+}
+---
 
 
