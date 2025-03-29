@@ -21,6 +21,11 @@ Create DBs post logging into pgadmin console : ecom-cs,ecom-is,ecom-pcs,ecom-ops
 # docker run -d --name zookeeper -p $VM_IP:2181:2181 zookeeper:latest
 # docker run -d --name kafka -p $VM_IP:9092:9092 -e KAFKA_ZOOKEEPER_CONNECT=$VM_IP:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://$VM_IP:9092 -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 confluentinc/cp-kafka:latest
 # TO-DO add the topics we need 
+docker exec -it kafka kafka-topics --list --bootstrap-server $VM_IP:9092
+docker exec -it kafka kafka-console-consumer --topic auth-events --bootstrap-server $VM_IP:9092 --from-beginning
+docker exec -it kafka kafka-console-consumer --topic product-events --bootstrap-server $VM_IP:9092 --from-beginning
+docker exec -it kafka kafka-console-consumer --topic order-events --bootstrap-server $VM_IP:9092 --from-beginning
+
 
 Backup
 # docker network create kafka-network
@@ -29,6 +34,9 @@ Backup
 # TO-DO add the topics we need 
 
 docker exec -it kafka kafka-topics --list --bootstrap-server $VM_IP:9092
+docker exec -it kafka kafka-console-consumer --topic auth-events --bootstrap-server $VM_IP:9092 --from-beginning
+docker exec -it kafka kafka-console-consumer --topic product-events --bootstrap-server $VM_IP:9092 --from-beginning
+docker exec -it kafka kafka-console-consumer --topic order-events --bootstrap-server $VM_IP:9092 --from-beginning
 
 docker exec -it kafka kafka-topics --create --topic test-topic --bootstrap-server $VM_IP:9092 --partitions 1 --replication-factor 1
 
