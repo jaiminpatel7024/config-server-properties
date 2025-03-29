@@ -7,7 +7,6 @@ docker run -d \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=postgres \
   -p 127.0.0.1:5432:5432 \
-  --network host \
   postgres:latest
 ---
 docker run -d \
