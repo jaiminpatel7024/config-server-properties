@@ -1,0 +1,18 @@
+docker run -d --name redis-container -p 6379:6379 redis:latest
+---
+docker run -d \
+  --name postgres-container \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=postgres \
+  -p 172.31.5.11:5432:5432 \
+  --network host \
+  postgres:latest
+---
+docker run -d \
+  --name pgadmin-container \
+  -p 172.31.5.11:8081:80 \
+  -e PGADMIN_DEFAULT_EMAIL=admin@admin.com \
+  -e PGADMIN_DEFAULT_PASSWORD=admin \
+  --link postgres-container:postgres \
+  dpage/pgadmin4
+---
