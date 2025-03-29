@@ -1,18 +1,18 @@
 sudo chown -R labuser:labuser /home/labuser/ecom/ecom-config-server
 ---
-docker run -d --name redis-container -p 6379:6379 redis:latest
+docker run -d --name redis-container -p 127.0.0.1:6379:6379 redis:latest
 ---
 docker run -d \
   --name postgres-container \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=postgres \
-  -p 172.31.5.11:5432:5432 \
+  -p 127.0.0.1:5432:5432 \
   --network host \
   postgres:latest
 ---
 docker run -d \
   --name pgadmin-container \
-  -p 172.31.5.11:8081:80 \
+  -p 127.0.0.1:8081:80 \
   -e PGADMIN_DEFAULT_EMAIL=admin@admin.com \
   -e PGADMIN_DEFAULT_PASSWORD=admin \
   --link postgres-container:postgres \
@@ -21,17 +21,17 @@ docker run -d \
 Create DBs post logging into pgadmin console : ecom-cs,ecom-is,ecom-pcs,ecom-ops,ecom-ps
 ---
 # docker network create kafka-network
-# docker run -d --name zookeeper --network kafka-network -p 172.31.5.11:2181:2181 zookeeper:latest
-# docker run -d --name kafka --network kafka-network -p 172.31.5.11:9092:9092   -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181   -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092   -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1   confluentinc/cp-kafka:latest
+# docker run -d --name zookeeper --network kafka-network -p 127.0.0.1:2181:2181 zookeeper:latest
+# docker run -d --name kafka --network kafka-network -p 127.0.0.1:9092:9092   -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181   -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092   -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1   confluentinc/cp-kafka:latest
 # TO-DO add the topics we need 
 
 
-docker exec -it kafka kafka-topics --list --bootstrap-server 172.31.5.11:9092
+docker exec -it kafka kafka-topics --list --bootstrap-server 127.0.0.1:9092
 
-docker exec -it kafka kafka-topics --create --topic test-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+docker exec -it kafka kafka-topics --create --topic test-topic --bootstrap-server 127.0.0.1:9092 --partitions 1 --replication-factor 1
 
-docker exec -it kafka kafka-console-producer --topic test-topic --bootstrap-server localhost:9092
-docker exec -it kafka kafka-console-consumer --topic test-topic --bootstrap-server localhost:9092 --from-beginning
+docker exec -it kafka kafka-console-producer --topic test-topic --bootstrap-server 127.0.0.1:9092
+docker exec -it kafka kafka-console-consumer --topic test-topic --bootstrap-server 127.0.0.1:9092 --from-beginning
 
 ---
 
