@@ -15,7 +15,6 @@ docker run -d \
   -p 127.0.0.1:8081:80 \
   -e PGADMIN_DEFAULT_EMAIL=admin@admin.com \
   -e PGADMIN_DEFAULT_PASSWORD=admin \
-  --link postgres-container:postgres \
   dpage/pgadmin4
 
 Create DBs post logging into pgadmin console : ecom-cs,ecom-is,ecom-pcs,ecom-ops,ecom-ps
