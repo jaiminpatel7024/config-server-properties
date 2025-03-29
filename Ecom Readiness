@@ -1,3 +1,5 @@
+sudo chown -R labuser:labuser /home/labuser/ecom/ecom-config-server
+---
 docker run -d --name redis-container -p 6379:6379 redis:latest
 ---
 docker run -d \
