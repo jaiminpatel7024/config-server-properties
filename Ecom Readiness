@@ -44,5 +44,7 @@ docker exec -it kafka kafka-console-producer --topic test-topic --bootstrap-serv
 docker exec -it kafka kafka-console-consumer --topic test-topic --bootstrap-server $VM_IP:9092 --from-beginning
 
 ---
-
+docker run -d --name zipkin -p 9411:9411 openzipkin/zipkin:latest
+---
+docker run -d --name loki -p 3100:3100 grafana/loki:latest
 
