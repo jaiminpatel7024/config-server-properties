@@ -6,7 +6,7 @@ sudo git clone https://github.com/jaiminpatel7024/ecom-product-catalog-service.g
 sudo git clone https://github.com/jaiminpatel7024/ecom-inventory-service.git
 sudo git clone https://github.com/jaiminpatel7024/ecom-order-processing-service.git
 sudo git clone https://github.com/jaiminpatel7024/ecom-payment-service.git
-sudo git clone https://github.com/jaiminpatel7024/ecom-api-composito-service.git
+sudo git clone https://github.com/jaiminpatel7024/ecom-api-compositor-service.git
 
 sudo chown -R labuser:labuser /home/labuser/ecom
 
