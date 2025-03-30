@@ -25,6 +25,15 @@ POST localhost:8072/ecom-product-catalog-service/api/v1/products/add
 	"imageUrl":"/a/b/c"
 }
 ---
+POST localhost:8072/ecom-product-catalog-service/api/v1/products/add
+{
+	"productId" :"2",
+	"name": "Desktop",
+	"brand" :"Lenovo",
+	"price":"10000",
+	"imageUrl":"/a/b/c"
+}
+---
 GET localhost:8072/ecom-product-catalog-service/api/v1/products/view/1
 ---
 GET localhost:8072/ecom-product-catalog-service/api/v1/products/viewAll
