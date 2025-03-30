@@ -1,4 +1,16 @@
-sudo chown -R labuser:labuser /home/labuser/ecom/ecom-config-server
+sudo git clone https://github.com/jaiminpatel7024/ecom-config-server.git
+sudo git clone https://github.com/jaiminpatel7024/ecom-eureka-server.git
+sudo git clone https://github.com/jaiminpatel7024/ecom-gateway-server.git
+sudo git clone https://github.com/jaiminpatel7024/ecom-customer-service.git
+sudo git clone https://github.com/jaiminpatel7024/ecom-product-catalog-service.git
+sudo git clone https://github.com/jaiminpatel7024/ecom-inventory-service.git
+sudo git clone https://github.com/jaiminpatel7024/ecom-order-processing-service.git
+sudo git clone https://github.com/jaiminpatel7024/ecom-payment-service.git
+sudo git clone https://github.com/jaiminpatel7024/ecom-api-composito-service.git
+
+sudo chown -R labuser:labuser /home/labuser/ecom
+
+EXPORT VM_IP=1.1.1.1
 ---
 docker run -d --name redis-container -p $VM_IP:6379:6379 redis:latest
 ---
@@ -47,4 +59,5 @@ docker exec -it kafka kafka-console-consumer --topic test-topic --bootstrap-serv
 docker run -d --name zipkin -p 9411:9411 openzipkin/zipkin:latest
 ---
 docker run -d --name loki -p 3100:3100 grafana/loki:latest
+---
 
