@@ -10,7 +10,7 @@ sudo git clone https://github.com/jaiminpatel7024/ecom-api-compositor-service.gi
 
 sudo chown -R labuser:labuser /home/labuser/ecom
 
-EXPORT VM_IP=1.1.1.1
+export VM_IP=1.1.1.1
 ---
 docker run -d --name redis-container -p $VM_IP:6379:6379 redis:latest
 ---
@@ -65,4 +65,19 @@ docker run -d --name=grafana \
   -e GF_SECURITY_ADMIN_PASSWORD=admin \
   grafana/grafana
 ---
+prometheus.yml ===
 
+global:
+  scrape_interval: 5s  # Scrape every 5 seconds
+
+scrape_configs:
+  - job_name: 'api-gateway'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['172.31.10.3:8072']  # API Gateway Port
+===
+docker run -d --name=prometheus \
+  -p 9090:9090 \
+  -v $(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml \
+  prom/prometheus
+---
