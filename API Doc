@@ -16,6 +16,14 @@ GET localhost:8072/ecom-customer-service/api/v1/login
 GET localhost:8072/ecom-customer-service/api/v1/validate
 + Authorization Token
 ---
+POST localhost:8072/ecom-customer-service/api/v1/users/update
+{
+	"username":"jp123",
+	"fullname":"Jaimin Patel",
+	"address":"Mehsana",
+	"contact":"12345"
+}
+---
 POST localhost:8072/ecom-product-catalog-service/api/v1/products/add
 {
 	"productId" :"1",
